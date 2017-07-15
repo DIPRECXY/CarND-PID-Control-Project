@@ -56,7 +56,7 @@ double PID::TotalError() {
 
 void PID::UpdateCoefficients() {
   
-  if ((dKp + dKi + dKd) > _update_threshold) {
+  if ((dKp + dKi + dKd) > update_threshold) {
     current_error = total_error / n_step;
     
     if (is_first_loop) {
