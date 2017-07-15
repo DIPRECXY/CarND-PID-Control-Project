@@ -23,7 +23,7 @@ PID::~PID() {}
 void PID::Init(double Kp, double Ki, double Kd) {
   dKp = Kp==0? 0.1:Kp/10.;
   dKi = Kp==0? 0.001:Ki/10.;
-  dKd = Kp==0 1.0:Kd/10.;
+  dKd = Kp==0? 1.0:Kd/10.;
   
   update_threshold = 0.00001;
 }
