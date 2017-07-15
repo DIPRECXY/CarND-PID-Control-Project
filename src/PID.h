@@ -16,6 +16,31 @@ public:
   double Kp;
   double Ki;
   double Kd;
+  
+  /*
+  * Update Coefficients
+  */  
+  double dKp;
+  double dKi;
+  double dKd;
+  
+  doubel update_threshold;
+  int update_position = 0;
+  int n_step = 0;
+  bool is_first_loop = true;
+  double best_error;
+  double current_error;
+  double total_error;
+  
+  /*
+  * Position Parameters
+  */ 
+  double x_trajectory = 0;
+  double y_trajectory = 0;
+  double orientation = 0;
+  double steering_noise = 0;
+  double distance_noise = 0;
+  double steering_drift = 0;
 
   /*
   * Constructor
@@ -41,6 +66,17 @@ public:
   * Calculate the total PID error.
   */
   double TotalError();
+  
+  /*
+  * Update coefficients by twiddle algorithm
+  */
+  void UpdateCoefficients();
+  
+  /*
+  * Update throttle based on steering angle
+  */
+  double UpdateThrottle(double steer_value);
+  
 };
 
 #endif /* PID_H */
