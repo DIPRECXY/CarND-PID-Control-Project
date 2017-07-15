@@ -24,7 +24,7 @@ public:
   double dKi;
   double dKd;
   
-  doubel update_threshold;
+  double update_threshold;
   int update_position = 0;
   int n_step = 0;
   bool is_first_loop = true;
