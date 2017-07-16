@@ -63,9 +63,9 @@ int main()
           
           // DEBUG
           std::cout << "CTE: " << cte << " Steering Value: " << steer_value << std::endl;
-          std::cout << "Kp: " << pid._Kp << std::endl;
-          std::cout << "Ki: " << pid._Ki << std::endl;
-          std::cout << "Kd: " << pid._Kd << std::endl;
+          std::cout << "Kp: " << pid.Kp << std::endl;
+          std::cout << "Ki: " << pid.Ki << std::endl;
+          std::cout << "Kd: " << pid.Kd << std::endl;
           std::cout << "p_error: " << pid.p_error << std::endl;
           std::cout << "i_error: " << pid.i_error << std::endl;
           std::cout << "d_error: " << pid.d_error << std::endl;
