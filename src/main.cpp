@@ -50,7 +50,7 @@ int main()
 	pid_steer.dp = {2.45227e-05, 2.68442e-05, 2.23031e-05};
 
 	// PID controller for throttle
-	pid_throttle.p = {-0.353402, 3.80884, -0.000491255};
+	pid_throttle.p = {0.353402, 3.80884, 0.000491255};
 	pid_throttle.dp = {6.25688e-08, 2.601e-07, 6.78076e-08};
 
 	pid_steer.TwiddleUpdate();
