@@ -58,7 +58,7 @@ int main()
 	max_speed = 0;
 
 	h.onMessage([&pid_steer, &pid_throttle, &max_speed]
-				 (uWS::WebSocket<uWS::SERVER> ws, char *data, size_t length, uWS::OpCode opCode) {
+				 (uWS::WebSocket<uWS::SERVER> *ws, char *data, size_t length, uWS::OpCode opCode) {
 		// "42" at the start of the message means there's a websocket message event.
 		// The 4 signifies a websocket message
 		// The 2 signifies a websocket event
@@ -106,7 +106,7 @@ int main()
 						cout << "Off track!  Resetting at n=" << n << " max_speed=" << max_speed;
 						cout << " Error=" << pid_steer.TotalError() << endl;
 						std::string reset_msg = "42[\"reset\",{}]";
-						ws.send(reset_msg.data(), reset_msg.length(), uWS::OpCode::TEXT);
+						ws->send(reset_msg.data(), reset_msg.length(), uWS::OpCode::TEXT);
 
 						// Tweak our parameters if needed
 						if (TUNE_STEERING) pid_steer.TwiddleStep(score);
@@ -150,12 +150,12 @@ int main()
 		}
 	});
 
-	h.onConnection([&h](uWS::WebSocket<uWS::SERVER> ws, uWS::HttpRequest req) {
+	h.onConnection([&h](uWS::WebSocket<uWS::SERVER> *ws, uWS::HttpRequest req) {
 		std::cout << "Connected yay!!!" << std::endl;
 	});
 
-	h.onDisconnection([&h](uWS::WebSocket<uWS::SERVER> ws, int code, char *message, size_t length) {
-		ws.close();
+	h.onDisconnection([&h](uWS::WebSocket<uWS::SERVER> *ws, int code, char *message, size_t length) {
+		ws->close();
 		std::cout << "Disconnected" << std::endl;
 	});
 
