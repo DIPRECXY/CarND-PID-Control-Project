@@ -125,12 +125,12 @@ int main()
 					msgJson["throttle"] = throttle;
 					auto msg = "42[\"steer\"," + msgJson.dump() + "]";
 					// std::cout << msg << std::endl;
-					ws.send(msg.data(), msg.length(), uWS::OpCode::TEXT);
+					ws->send(msg.data(), msg.length(), uWS::OpCode::TEXT);
 				}
 			} else {
 				// Manual driving
 				std::string msg = "42[\"manual\",{}]";
-				ws.send(msg.data(), msg.length(), uWS::OpCode::TEXT);
+				ws->send(msg.data(), msg.length(), uWS::OpCode::TEXT);
 			}
 		}
 	});
